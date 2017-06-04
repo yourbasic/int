@@ -6,6 +6,26 @@
 
 *The Zahlen symbol, used to denote the set of all integers.*
 
+# Table of contents
+
+[Introduction](#introduction)
+
+[Generic graph data](#generic-graph-data)
+
+* [Breadth-first search](#breadth-first-search)
+
+[Effective bit manipulation](#effective-bit-manipulation)
+
+[Efficient filtering](#efficient-filtering)
+
+* [A blacklist of shady websites](#a-blacklist-of-shady-websites)
+
+* [Implementation](#implementation)
+
+[Simple sets](#simple-sets)
+
+* [Sieve of Eratosthenes](#sieve-of-eratosthenes)
+
 # Introduction
 
 Every kid knows what an [integer number][integer] is,
@@ -41,7 +61,7 @@ Unless otherwise stated, an **integer** indicates an integral data type
 consisting of 32 or 64 bits.
 
 
-# Generic data in graphs
+# Generic graph data
 
 Since graphs are used to model countless types of relations and processes
 in varied kinds of systems and settings, there is no telling what kind of data
@@ -87,7 +107,7 @@ an array of booleans to keep track of which vertices have been visited.
 *Source code from [bfs.go][graphbfs].*
 
 
-# Effective bit-twiddling
+# Effective bit manipulation
 
 Bitwise operators...
 
@@ -123,31 +143,7 @@ Here is a code sample from the [bit][bit] package:
 *Source code from [funcs.go][bitfunc].*
 
 
-# Efficient sets
-
-A bit set, or bit array, is an efficient set data structure that consists
-of an array of bits. Because it uses bit-level parallelism,
-limits memory access, and efficiently uses the data cache,
-a bit set often outperforms other data structures.
-
-### Sieve of Eratosthenes
-
-This code snippet uses a bit set to create the set of all primes less than *n*
-in O(*n* log log *n*) time. Try it with *n* equal to a few hundred millions
-and be pleasantly surprised.
-
-    sieve := bit.New().AddRange(2, n)
-    sqrtN := int(math.Sqrt(n))
-    for p := 2; p <= sqrtN; p = sieve.Next(p) {
-        for k := p * p; k < n; k += p {
-            sieve.Delete(k)
-        }
-    }
-
-*From [godoc.org/github.com/yourbasic/bit][bitdoc].*
-
-
-# Simple filtering
+# Efficient filtering
 
 A Bloom filter is a fast and space-efficient probabilistic data structure
 used to test set membership.
@@ -186,6 +182,31 @@ that consists of 18 bits and uses 3 hash functions.
 The colored arrows point to the bits that the elements
 of the set {x, y, z} are mapped to. The element w is not in the set,
 because it hashes to a bit position containing 0.
+
+
+# Simple sets
+
+A bit set, or bit array, is an efficient set data structure that consists
+of an array of bits. Because it uses bit-level parallelism,
+limits memory access, and efficiently uses the data cache,
+a bit set often outperforms other data structures.
+
+### Sieve of Eratosthenes
+
+This code snippet uses a bit set to create the set of all primes less than *n*
+in O(*n* log log *n*) time. Try it with *n* equal to a few hundred millions
+and be pleasantly surprised.
+
+    sieve := bit.New().AddRange(2, n)
+    sqrtN := int(math.Sqrt(n))
+    for p := 2; p <= sqrtN; p = sieve.Next(p) {
+        for k := p * p; k < n; k += p {
+            sieve.Delete(k)
+        }
+    }
+
+*From [godoc.org/github.com/yourbasic/bit][bitdoc].*
+
 
 
 #### Stefan Nilsson — [korthaj][korthaj]
