@@ -161,7 +161,7 @@ the probability of false positives increases.
 ![Bloom filter](res/bloom.png)
 
 *An example of a Bloom filter that  consists of 18 bits and uses 3 hash functions.  
-The colored arrows show the bits that the set elements are mapped to.  
+The colored arrows point to the bits that the elements of the set {x, y, z} are mapped to.  
 The element w is not in the set, because it hashes to a bit position containing 0.*
 
 
