@@ -186,7 +186,7 @@ because it hashes to a bit position containing 0.
 
 # Simple sets
 
-A bit set, or bit array, is a simple set data structure
+A **bit set**, or bit array, is a simple set data structure
 that consists of an array of bits. The bit at position *k*
 is set if and only if *k* belongs to the set.
 Because it uses bit-level parallelism, limits memory access,
@@ -195,9 +195,9 @@ and often outperforms other data structures.
 
 ### Sieve of Eratosthenes
 
-This code snippet uses a bit set to create the set of all primes less than *n*
-in O(*n* log log *n*) time. Try it with *n* equal to a few hundred millions
-and be pleasantly surprised.
+This code uses a bit set implementation from the [bit][bit] package
+to create the set of all primes less than *n* in O(*n* log log *n*) time.
+Try it with *n* equal to a few hundred millions and be pleasantly surprised.
 
     sieve := bit.New().AddRange(2, n)
     sqrtN := int(math.Sqrt(n))
