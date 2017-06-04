@@ -1,6 +1,6 @@
 # Your basic int [sketch]
 
-### The ultimate forgotten data type
+### The ultimate underrated data type
 
 ![DOUBLE-STRUCK CAPITAL Z](res/z.png)
 
@@ -25,6 +25,10 @@ Still we frequently forget how powerful an integer can be.
   An `int` fits inside a register sitting on the main datapath of the CPU,  
   and an `int[]` is the main focus of hardware memory optimization.  
   It doesn't get much faster or more efficient than that.
+
+- **Simple**  
+  Not really, but we've used arithmetic since childhood so it feels that way.  
+  Familiarity breeds both simplicity and contempt.
 
 TODO: In this text we...
 
