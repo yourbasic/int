@@ -1,6 +1,6 @@
 # Your basic int
 
-### The ultimate underrated data type
+### A tribute to the ultimate underrated data type
 
 ![DOUBLE-STRUCK CAPITAL Z](res/z.png)
 
