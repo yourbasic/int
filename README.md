@@ -9,34 +9,34 @@
 # Introduction
 
 Every kid knows what an [integer number][integer] is,
-and every programmer is familiar the [int data type][int].  
-But still, we frequently forget how powerful an `int` can be.
+and every programmer is familiar with the [int data type][int].  
+Still we frequently forget how powerful an integer can be.
 
-In this text...
+- **Generic**  
+  An `int` or `int[]` is a bit pattern that can represent anything.  
+  Furthermore, an `int` can point into an array containing any type of data.  
+  That's as generic as it gets.
 
-The code examples are in Go and the text comes with three example libraries:
+- **Effective**  
+  With an `int` you have all of basic mathematics at your finger tips;  
+  and boolean algebra, implemented in parallel by bitwise operators, to boot.
 
-- [bit][bit] is a set data structure with bonus bit-twiddling functions,
-- [bloom][bloom] is a probabilistic set data structure,
+- **Efficient**  
+  An `int` fits inside a register sitting on the main datapath of the CPU,  
+  and an `int[]` is the main focus of hardware memory optimization.  
+  It doesn't get much faster or more efficient than that.
+
+TODO: In this text we...
+
+The code examples are in [Go][golang] and the text comes with
+three example libraries:
+
+- [bit][bit] contains a set data structure and some bit-twiddling functions,
+- [bloom][bloom] is a Bloom filter, a probabilistic set data structure,
 - [graph][graph] is a library of basic graph algorithms.
 
-
-### Generic
-
-An integer is a bit pattern; it can represent anything.
-
-
-### Effective
-
-With an integer you have all of basic mathematics at your finger tips;  
-and boolean algebra, implemented in parallel, to boot.
-
-
-### Efficient
-
-An integer fits inside a register sitting on the main datapath of the CPU,  
-and arrays of integers are the main focus of memory optimization.  
-It doesn't get any faster or more efficient than that.
+The term "integer" is used to indicate an integral data type
+consisting of 32 or 64 bits, unless otherwise stated.
 
 
 # Generic vertex labeling
@@ -148,7 +148,7 @@ will always be identified as ”likely member”.
 The probabilities of different outcomes of a membership test
 at a false-positives rate of 1/100 are:
 
-    Test(s)                 true     false
+    Test(s)                 true     falsee
     --------------------------------------
     s has been added        1        0
     s has not been added    0.01     0.99
@@ -166,6 +166,7 @@ the probability of false positives increases.
 [bitfunc]: https://github.com/yourbasic/bit/blob/master/funcs.go
 [bloom]: https://github.com/yourbasic/bloom
 [CCBY3]: https://creativecommons.org/licenses/by/3.0/deed.en
+[golang]: https://golang.org
 [graph]: https://github.com/yourbasic/graph
 [graphbfs]: https://github.com/yourbasic/graph/blob/master/bfs.go
 [int]: https://en.wikipedia.org/wiki/Integer_(computer_science)
