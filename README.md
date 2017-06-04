@@ -41,19 +41,26 @@ Unless otherwise stated, an **integer** indicates an integral data type
 consisting of 32 or 64 bits.
 
 
-# Generic vertex labeling
+# Generic data in graphs
 
-Don't reach for parametric polymorphism or complicated type hierarchies
-when an integer does a better job.
+Since graphs are used to model countless types of relations and processes
+in varied kinds of systems and settings, there is no telling what kind of data
+a generic graph library will encounter. Should we use parametric polymorphism
+or perhaps a pointer to the top of a type hierarchy?
 
-From the [github.com/yourbasic/graph][graph] package:
+It's easy to forget that an integer may be the best choice.
+Here is a solution from the [graph][graph] package:
 
     All algorithms operate on directed graphs with a fixed number of vertices, 
     labeled from 0 to n-1, and edges with integer cost.
 
 Since vertices are represented by integers, it's easy to add vertex data
-on the side. For example, this implementation of breadth-first search
-uses an array of booleans to keep track of which vertices have been visited.
+on the side.
+
+### Breadth-first search
+
+For example, this implementation of breadth-first search uses
+an array of booleans to keep track of which vertices have been visited.
 
     // BFS traverses g in breadth-first order starting at v.
     // When the algorithm follows an edge (v, w) and finds a previously
@@ -77,10 +84,10 @@ uses an array of booleans to keep track of which vertices have been visited.
         }
     }
 
-*From [bfs.go][graphbfs].*
+*Source code from [bfs.go][graphbfs].*
 
 
-# Bit-twiddling
+# Effective bit-twiddling
 
 Bitwise operators...
 
@@ -113,20 +120,22 @@ Code sample from the [github.com/yourbasic/bit][bit] package:
         return int(w)
     }
 
-*From [funcs.go][bitfunc].*
+*Source code from [funcs.go][bitfunc].*
 
 
-# Bit set
+# Efficient sets
 
 A bit set, or bit array, is an efficient set data structure that consists
 of an array of bits. Because it uses bit-level parallelism,
 limits memory access, and efficiently uses the data cache,
 a bit set often outperforms other data structures.
 
-Create the set of all primes less than *n* in O(*n* log log *n*) time.
-Try the code with *n* equal to a few hundred millions and be pleasantly surprised.
+### Sieve of Eratosthenes
 
-    // Sieve of Eratosthenes
+This code snippet uses a bit set to create the set of all primes less than *n*
+in O(*n* log log *n*) time. Try it with *n* equal to a few hundred millions
+and be pleasantly surprised.
+
     sieve := bit.New().AddRange(2, n)
     sqrtN := int(math.Sqrt(n))
     for p := 2; p <= sqrtN; p = sieve.Next(p) {
@@ -138,7 +147,7 @@ Try the code with *n* equal to a few hundred millions and be pleasantly surprise
 *From [godoc.org/github.com/yourbasic/bit][bitdoc].*
 
 
-# Bloom filter
+# Simple filtering
 
 A Bloom filter is a fast and space-efficient probabilistic data structure
 used to test set membership.
@@ -147,16 +156,25 @@ A membership test returns either ”likely member” or ”definitely not a memb
 Only false positives can occur: an element that has been added to the filter
 will always be identified as ”likely member”.
 
-The probabilities of different outcomes of a membership test
-at a false-positives rate of 1/100 are:
+### A blacklist of shady websites
 
-    Test(s)                 true     falsee
-    --------------------------------------
-    s has been added        1        0
-    s has not been added    0.01     0.99
+    // Create a Bloom filter with room for 10000 elements
+    // at a false-positives rate less than 0.5 percent.
+    blacklist := bloom.New(10000, 200)
+    
+    // Add an element to the filter.
+    url := "https://rascal.com"
+    blacklist.Add(url)
+    
+    // Test for membership.
+    if blacklist.Test(url) {
+        fmt.Println(url, "seems to be shady.")
+    } else {
+        fmt.Println(url, "has not yet been added to our blacklist.")
+    }
 
-Elements can be added, but not removed. With more elements in the filter,
-the probability of false positives increases.
+*From [godoc.org/github.com/yourbasic/bit][bloomdoc].*
+
 
 ### Implementation
 
@@ -175,6 +193,7 @@ The element w is not in the set, because it hashes to a bit position containing 
 [bitdoc]: https://godoc.org/github.com/yourbasic/bit
 [bitfunc]: https://github.com/yourbasic/bit/blob/master/funcs.go
 [bloom]: https://github.com/yourbasic/bloom
+[bloomdoc]: https://godoc.org/github.com/yourbasic/bloom
 [CCBY3]: https://creativecommons.org/licenses/by/3.0/deed.en
 [golang]: https://golang.org
 [graph]: https://github.com/yourbasic/graph
