@@ -48,18 +48,18 @@ in varied kinds of systems and settings, there is no telling what kind of data
 a generic graph library will encounter. Should we use parametric polymorphism
 or perhaps a pointer to the top of a type hierarchy?
 
-It's easy to forget that an integer may be the best choice.
+It's easy to forget that an integer may be the preferred choice.
 Here is a solution from the [graph][graph] package:
 
     All algorithms operate on directed graphs with a fixed number of vertices, 
     labeled from 0 to n-1, and edges with integer cost.
 
-Since vertices are represented by integers, it's easy to add vertex data
-on the side.
+Since vertices are represented by integers, it's easy to add any kind of
+vertex data on the side.
 
 ### Breadth-first search
 
-For example, this implementation of breadth-first search uses
+For example, this generic implementation of breadth-first search uses
 an array of booleans to keep track of which vertices have been visited.
 
     // BFS traverses g in breadth-first order starting at v.
@@ -91,7 +91,7 @@ an array of booleans to keep track of which vertices have been visited.
 
 Bitwise operators...
 
-Code sample from the [github.com/yourbasic/bit][bit] package:
+Here is a code sample from the [bit][bit] package:
 
     // Count returns the number of nonzero bits in w.
     func Count(w uint64) int {
@@ -173,16 +173,19 @@ will always be identified as ”likely member”.
         fmt.Println(url, "has not yet been added to our blacklist.")
     }
 
-*From [godoc.org/github.com/yourbasic/bit][bloomdoc].*
+*Example from [godoc.org/github.com/yourbasic/bit][bloomdoc].*
 
 
 ### Implementation
 
+This example from [Wikipedia][wikibloom] depicts a Bloom filter
+that consists of 18 bits and uses 3 hash functions.
+
 ![Bloom filter](res/bloom.png)
 
-*An example of a Bloom filter that  consists of 18 bits and uses 3 hash functions.  
-The colored arrows point to the bits that the elements of the set {x, y, z} are mapped to.  
-The element w is not in the set, because it hashes to a bit position containing 0.*
+The colored arrows point to the bits that the elements
+of the set {x, y, z} are mapped to. The element w is not in the set,
+because it hashes to a bit position containing 0.
 
 
 #### Stefan Nilsson — [korthaj][korthaj]
