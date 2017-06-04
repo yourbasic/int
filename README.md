@@ -1,4 +1,4 @@
-# Your basic int [sketch]
+# Your basic int
 
 ### The ultimate underrated data type
 
@@ -19,7 +19,7 @@ Still we frequently forget how powerful an integer can be.
 
 - **Effective**  
   With an `int` you have all of basic mathematics at your finger tips;  
-  and boolean algebra, implemented in parallel by bitwise operators, to boot.
+  and boolean algebra, implemented with bit-level parallelism, to boot.
 
 - **Efficient**  
   An `int` fits inside a register sitting on the main datapath of the CPU,  
@@ -30,17 +30,15 @@ Still we frequently forget how powerful an integer can be.
   Not really, but we've used arithmetic since childhood so it feels that way.  
   Familiarity breeds both simplicity and contempt.
 
-TODO: In this text we...
-
 The code examples are in [Go][golang] and the text comes with
 three example libraries:
 
 - [bit][bit] contains a set data structure and some bit-twiddling functions,
-- [bloom][bloom] is a Bloom filter, a probabilistic set data structure,
+- [bloom][bloom] is a Bloom filter, a probabilistic set data structure, and
 - [graph][graph] is a library of basic graph algorithms.
 
-The term "integer" is used to indicate an integral data type
-consisting of 32 or 64 bits, unless otherwise stated.
+Unless otherwise stated, an **integer** indicates an integral data type
+consisting of 32 or 64 bits.
 
 
 # Generic vertex labeling
