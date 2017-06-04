@@ -186,10 +186,12 @@ because it hashes to a bit position containing 0.
 
 # Simple sets
 
-A bit set, or bit array, is an efficient set data structure that consists
-of an array of bits. Because it uses bit-level parallelism,
-limits memory access, and efficiently uses the data cache,
-a bit set often outperforms other data structures.
+A bit set, or bit array, is a simple set data structure
+that consists of an array of bits. The bit at position *k*
+is set if and only if *k* belongs to the set.
+Because it uses bit-level parallelism, limits memory access,
+and efficiently uses the data cache, a bit set can be very efficient
+and often outperforms other data structures.
 
 ### Sieve of Eratosthenes
 
