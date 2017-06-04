@@ -156,6 +156,15 @@ at a false-positives rate of 1/100 are:
 Elements can be added, but not removed. With more elements in the filter,
 the probability of false positives increases.
 
+### Implementation
+
+![Bloom filter](res/bloom.png)
+[comment]: <> (*Image from [Wikipedia][wikibloom], public domain.*)
+
+*An example of a Bloom filter that  consists of 18 bits and uses 3 hash functions.  
+The colored arrows show the bits that the set elements are mapped to.  
+The element w is not in the set, because it hashes to a bit position containing 0.*
+
 
 #### Stefan Nilsson — [korthaj][korthaj]
 
@@ -172,5 +181,6 @@ the probability of false positives increases.
 [int]: https://en.wikipedia.org/wiki/Integer_(computer_science)
 [integer]: https://en.wikipedia.org/wiki/Integer
 [korthaj]: https://github.com/korthaj
+[wikibloom]: https://en.wikipedia.org/wiki/File:Bloom_filter.svg
 [wikiint]: (https://commons.wikimedia.org/wiki/File:Integers-line.svg)
 
