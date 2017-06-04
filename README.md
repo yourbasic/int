@@ -159,7 +159,6 @@ the probability of false positives increases.
 ### Implementation
 
 ![Bloom filter](res/bloom.png)
-[comment]: <> (*Image from [Wikipedia][wikibloom], public domain.*)
 
 *An example of a Bloom filter that  consists of 18 bits and uses 3 hash functions.  
 The colored arrows show the bits that the set elements are mapped to.  
