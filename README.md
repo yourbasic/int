@@ -4,7 +4,7 @@
 
 ![DOUBLE-STRUCK CAPITAL Z](res/z.png)
 
-*Unicode Character 'DOUBLE-STRUCK CAPITAL Z' (U+2124)*
+*The Zahlen symbol, used to denote the set of all integers.*
 
 # Introduction
 
