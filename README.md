@@ -10,6 +10,8 @@
 
 [Introduction](#introduction)
 
+* [Resources](resources)
+
 [Generic graph data](#generic-graph-data)
 
 * [Breadth-first search](#breadth-first-search)
@@ -22,15 +24,16 @@
 
 * [Fast integer sorting](#fast-integer-sorting)
 
+[Simple sets](#simple-sets)
+
+* [Sieve of Eratosthenes](#sieve-of-eratosthenes)
+
 [Efficient filtering](#efficient-filtering)
 
 * [A blacklist of shady websites](#a-blacklist-of-shady-websites)
 
 * [Bloom filter](#bloom-filter)
 
-[Simple sets](#simple-sets)
-
-* [Sieve of Eratosthenes](#sieve-of-eratosthenes)
 
 # Introduction
 
@@ -47,14 +50,16 @@ Still we frequently forget how powerful an integer can be.
   With an `int` you have all of basic mathematics at your finger tips;  
   and boolean algebra, implemented with bit-level parallelism, to boot.
 
+- **Simple**  
+  Not really, but we've used arithmetic since childhood so it feels that way.  
+  Familiarity breeds both simplicity and contempt.
+
 - **Efficient**  
   An `int` fits inside a register sitting on the main datapath of the CPU,  
   and an `int[]` is the main focus of hardware memory optimization.  
   It doesn't get much faster or more efficient than that.
 
-- **Simple**  
-  Not really, but we've used arithmetic since childhood so it feels that way.  
-  Familiarity breeds both simplicity and contempt.
+### Resources
 
 The text comes with three [Go][golang] example libraries:
 
@@ -64,9 +69,6 @@ The text comes with three [Go][golang] example libraries:
   is a Bloom filter, a probabilistic set data structure, and
 - [github.com/yourbasic/graph][graph]
   is a library of basic graph algorithms.
-
-Unless otherwise stated, an **integer** indicates an integral data type
-consisting of 32 or 64 bits.
 
 
 # Generic graph data
@@ -187,6 +189,38 @@ on a unit-cost RAM machine, the standard computational model in theoretical
 computer science. [The fastest sorting algorithm?][sort] has all the details.
 
 
+# Simple sets
+
+A **bit set**, or bit array, must be the simplest data structure in town.
+It consists of an array of integers, where the bit at position *k*
+is set if and only if *k* belongs to the set.
+
+Even though it's simple, a bit set can be quite powerful. Because it uses
+bit-level parallelism, limits memory access, and plays nicely with
+the data cache, it tends to be very efficient and often outperforms other
+set data structures.
+
+Memory consumption isn't too shabby either. If you have a gigabyte
+of RAM to spare, you can story a set of integer elements in the range
+0 to 8,589,934,591.
+
+### Sieve of Eratosthenes
+
+This piece of code uses a bit set to generate the set of all primes
+less than *n* in O(*n* log log *n*) time. Try it with *n* equal to
+a few hundred millions and be pleasantly surprised.
+
+    sieve := bit.New().AddRange(2, n)
+    sqrtN := int(math.Sqrt(n))
+    for p := 2; p <= sqrtN; p = sieve.Next(p) {
+        for k := p * p; k < n; k += p {
+            sieve.Delete(k)
+        }
+    }
+
+*Example from [godoc.org/github.com/yourbasic/bit][bitdoc].*
+
+
 # Efficient filtering
 
 A Bloom filter is a fast and space-efficient probabilistic data structure
@@ -226,33 +260,6 @@ that consists of 18 bits and uses 3 hash functions.
 The colored arrows point to the bits that the elements
 of the set {x, y, z} are mapped to. The element w is not in the set,
 because it hashes to a bit position containing 0.
-
-
-# Simple sets
-
-A **bit set**, or bit array, is a simple set data structure
-that consists of an array of bits. The bit at position *k*
-is set if and only if *k* belongs to the set.
-Because it uses bit-level parallelism, limits memory access,
-and efficiently uses the data cache, a bit set can be very efficient
-and often outperforms other data structures.
-
-### Sieve of Eratosthenes
-
-This code uses a bit set implementation from the [bit][bit] package
-to create the set of all primes less than *n* in O(*n* log log *n*) time.
-Try it with *n* equal to a few hundred millions and be pleasantly surprised.
-
-    sieve := bit.New().AddRange(2, n)
-    sqrtN := int(math.Sqrt(n))
-    for p := 2; p <= sqrtN; p = sieve.Next(p) {
-        for k := p * p; k < n; k += p {
-            sieve.Delete(k)
-        }
-    }
-
-*From [godoc.org/github.com/yourbasic/bit][bitdoc].*
-
 
 
 #### Stefan Nilsson — [korthaj][korthaj]
