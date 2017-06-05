@@ -124,8 +124,8 @@ Even though they don't form a Turing-complete set of operations,
 they can still be surprisingly effective.
 
 The standard set of bitwise operators found in pretty much every CPU
-includes bitwise `not`, `and`, `or` and `xor` instructions; plus a collection
-of `shift` and `rotate` instructions. A bit count instruction,
+includes the bitwise `not`, `and`, `or` and `xor` instructions; plus
+a collection of `shift` and `rotate` instructions. A bit count instruction,
 often known as `popcnt`, is also quite common.
 
 
@@ -182,9 +182,9 @@ Here is a fun code sample from the [bit][bit] package:
 
 Radix sort uses bit manipulation to good effect and bitwise operators are
 crucial in the implementation of the fastest known integer sorting algorithm.
-This algorithm sorts *n* integers in O(*n* log log *n*) time
-in the unit-cost RAM model, the standard model of theoretical computer science.
-[The fastest sorting algorithm?][sort] has all the details.
+This algorithm sorts *n* integers in O(*n* log log *n*) worst-case time
+on a unit-cost RAM machine, the standard computational model in theoretical
+computer science. [The fastest sorting algorithm?][sort] has all the details.
 
 
 # Efficient filtering
