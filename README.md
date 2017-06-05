@@ -26,7 +26,7 @@
 
 * [A blacklist of shady websites](#a-blacklist-of-shady-websites)
 
-* [Implementation](#implementation)
+* [Bloom filter](#bloom-filter)
 
 [Simple sets](#simple-sets)
 
@@ -213,7 +213,7 @@ will always be identified as ”likely member”.
 *Example from [godoc.org/github.com/yourbasic/bit][bloomdoc].*
 
 
-### Implementation
+### Bloom filter
 
 This example from [Wikipedia][wikibloom] depicts a Bloom filter
 that consists of 18 bits and uses 3 hash functions.
