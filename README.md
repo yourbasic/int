@@ -116,33 +116,31 @@ an array of booleans to keep track of which vertices have been visited.
 # Effective bit manipulation
 
 Bitwise operators operate on single bits, often in parallel, within an integer.
-They offer a set of fast, simple actions that can be surprisingly effective.
+They provide a set of fast, simple actions that can be surprisingly effective.
 
-The standard set of bitwise instructions found in pretty much every CPU includes
-`not`, `and`, `or`, `xor`, and a selection of `shift` and `rotate` instructions.
-A bit count instruction, often known as `popcnt`, is also quite common.
+The standard set of bitwise instructions found in pretty much every CPU
+includes bitwise `not`, `and`, `or` and `xor` instructions; plus a collection
+of `shift` and `rotate` instructions. A bit count instruction,
+often known as `popcnt`, is also quite common.
 
 
 ### Needles in big haystacks
 
 The **hamming distance** between two integers, the number of positions
 at which the corresponding bits are different, is an effective way
-to estimate similarity. It can be computed using `xor` and a `popcnt`.
-
-    hamming := bit.Count(b1 ^ b2)
+to estimate similarity. It can be computed using just one `xor`
+and one `popcnt` instruction.
 
 Rumor has it that organizations who are sifting through huge amounts of data
-prefer to use CPU:s featuring a native bit count instruction.
-Ryzen, the new microarchitecture from AMD, is able to execute four `popcnt`
-instructions per clock cycle.
+prefer to buy CPU:s that come with a bit count instruction. Zen, the new
+microarchitecture from AMD, supports four `popcnt` instructions per clock cycle.
 
 
 ### Bit count
 
-If your CPU doesn't offer a native bit count operation,
-it can still be implemented quite efficiently using only
-the more common bitwise operators.
-Here is a code sample from the [bit][bit] package:
+If the CPU doesn't have a native bit count operation, it can still
+be implemented quite efficiently using the more common bitwise operators.
+Here is a fun code sample from the [bit][bit] package:
 
     // Count returns the number of nonzero bits in w.
     func Count(w uint64) int {
@@ -176,11 +174,11 @@ Here is a code sample from the [bit][bit] package:
 
 ### Fast integer sorting
 
-The different flavors of radix sort use bit-twiddling to good effect.
+The different flavors of radix sort use bit manipulation to good effect.
 Bitwise operators are also crucial in the implementation of the fastest
 (in the standard unit-cost RAM model) known integer sorting algorithm,
 which sorts *n* integers in O(*n* log log *n*) time.
-[The fastest sorting algorithm?][sort] gives all the details.
+[The fastest sorting algorithm?][sort] has all the details.
 
 
 # Efficient filtering
