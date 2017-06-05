@@ -15,7 +15,7 @@
 
 [Introduction](#introduction)
 
-* [Resources](resources)
+* [Resources](#resources)
 
 [Generic graph data](#generic-graph-data)
 
