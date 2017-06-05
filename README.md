@@ -214,7 +214,7 @@ computer science. [The fastest sorting algorithm?][sort] has all the details.
 
 A **bit set**, or bit array, must be the simplest data structure in town.
 It consists of an array of integers, where the bit at position *k*
-is set if and only if *k* belongs to the set.
+is one whenever *k* belongs to the set.
 
 Even though it's simple, a bit set can be quite powerful. Because it uses
 bit-level parallelism, limits memory access, and plays nicely with
@@ -259,9 +259,8 @@ A membership test returns either ”likely member” or ”definitely not a memb
 Only false positives can occur: an element that has been added to the filter
 will always be identified as ”likely member”.
 
-Bloom filters are both fast and space-efficient.
-Akamai uses them to avoid caching one-hit wonders, files that are seen
-only once, in their content delivery networks.
+Bloom filters are both fast and space-efficient. Akamai uses them
+to avoid caching one-hit wonders, files that are seen only once.
 Google uses them in Chrome to check for potentially harmful URLs.
 
 
@@ -310,7 +309,7 @@ that consists of 18 bits and uses 3 hash functions.
 ![Bloom filter](res/bloom.png)
 
 The colored arrows point to the bits that the elements
-of the set {x, y, z} are mapped to. The element w is not in the set,
+of the set {*x*, *y*, *z*} are mapped to. The element *w* is not in the set,
 because it hashes to a bit position containing 0.
 
 
