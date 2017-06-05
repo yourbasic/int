@@ -14,9 +14,9 @@
 
 * [Breadth-first search](#breadth-first-search)
 
-[Effective search and sort](#effective-search-and-sort)
+[Effective searching and sorting](#effective-searching-and-sorting)
 
-* [Needles in big haystacks](#needles-in-big-haystacks)
+* [Needles in huge haystacks](#needles-in-huge-haystacks)
 
 * [Bit count](#bit-count)
 
@@ -58,9 +58,12 @@ Still we frequently forget how powerful an integer can be.
 
 The text comes with three [Go][golang] example libraries:
 
-- [bit][bit] contains a set data structure and some bit-twiddling functions,
-- [bloom][bloom] is a Bloom filter, a probabilistic set data structure, and
-- [graph][graph] is a library of basic graph algorithms.
+- [github.com/yourbasic/bit][bit]
+  contains a set data structure and some bit-twiddling functions,
+- [github.com/yourbasic/bloom][bloom]
+  is a Bloom filter, a probabilistic set data structure, and
+- [github.com/yourbasic/graph][graph]
+  is a library of basic graph algorithms.
 
 Unless otherwise stated, an **integer** indicates an integral data type
 consisting of 32 or 64 bits.
@@ -112,7 +115,7 @@ an array of booleans to keep track of which vertices have been visited.
 *Source code from [bfs.go][graphbfs].*
 
 
-# Effective search and sort
+# Effective searching and sorting
 
 Some of the most effective search and sort strategies are implemented
 by bit manipulation done with bitwise integer operators.
@@ -126,7 +129,7 @@ of `shift` and `rotate` instructions. A bit count instruction,
 often known as `popcnt`, is also quite common.
 
 
-### Needles in big haystacks
+### Needles in huge haystacks
 
 The **Hamming distance** between two integers, the number of positions
 at which the corresponding bits are different, is an effective way
@@ -134,9 +137,9 @@ to estimate similarity; it can be computed using just one `xor`
 and one `popcnt` instruction.
 
 Rumor has it that organizations who are sifting through huge amounts of data
-prefer to buy CPU:s that come with a bit count instruction. Zen, the new
-microarchitecture from AMD, supports no less than four `popcnt` instructions
-per clock cycle.
+prefer to buy CPU:s that come with a bit count instruction.
+As a case in point, the new Zen microarchitecture from AMD supports
+no less than four `popcnt` instructions per clock cycle.
 
 
 ### Bit count
