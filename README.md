@@ -9,7 +9,7 @@
 > 
 > you're so under rated, it sucks.
 
-**Underrated,** *[Urban Dictionary][urban].*
+**Underrated** *defined by [Urban Dictionary][urban].*
 
 # Table of contents
 
@@ -37,7 +37,7 @@
 
 * [A blacklist of shady websites](#a-blacklist-of-shady-websites)
 
-* [Bloom filter](#bloom-filter)
+* [Bloom filter implementation](#bloom-filter-implementation)
 
 
 # Introduction
@@ -270,9 +270,22 @@ Here is a code snippet showing a typical Bloom filter use case.
 *Example from [godoc.org/github.com/yourbasic/bit][bloomdoc].*
 
 
-### Bloom filter
+### Bloom filter implementation
 
-The implemenation is quite straightforward... TODO
+The implementation of a Bloom filter is straightforward.
+An empty Bloom filter is a bit array of *m* bits, all set to 0.
+There are also *k* different hash functions, each of which maps
+a set element to one of the *m* bit positions.
+
+- To add an element, feed it to the hash functions to get *k* bit positions,  
+  and set the bits at these positions to 1.
+
+- To test if an element is in the set, feed it to
+  the hash functions to get *k* bit positions.  
+  If any of the bits at these positions is 0,
+  the element is definitely not in the set.  
+  If all are 1, then the element
+  is probably in the set.
 
 This example from [Wikipedia][wikibloom] depicts a Bloom filter
 that consists of 18 bits and uses 3 hash functions.
