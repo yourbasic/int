@@ -44,7 +44,7 @@
 
 ![DOUBLE-STRUCK CAPITAL Z](res/z.png)
 
-*The Zahlen symbol, used to denote the set of all integers.*
+**The Zahlen symbol** *used to denote the set of all integers.*
 
 Every kid knows what an [integer number][integer] is,
 and every programmer is familiar with the [int data type][int].  
@@ -82,10 +82,15 @@ The text comes with three [Go][golang] example libraries:
 
 # Generic graph data
 
+![Graph](res/graph.png)
+
+**Cubical graph with vertex colors**, *image from [Wikipedia][wikicube].*
+
 Since graphs are used to model countless types of relations and processes
 in varied kinds of systems and settings, there is no telling what kind of data
-a generic graph library will encounter. Should we use parametric polymorphism
-or perhaps a pointer to the top of a type hierarchy?
+a generic graph library will encounter. Both vertices and edges might need
+to be labeled. Should we use parametric polymorphism or perhaps a pointer
+to the top of a type hierarchy?
 
 It's easy to forget that an integer may be the preferred choice.
 Here is a solution from the [graph][graph] package:
@@ -95,6 +100,7 @@ Here is a solution from the [graph][graph] package:
 
 Since vertices are represented by integers, it's easy to add any kind of
 vertex data on the side.
+
 
 ### Breadth-first search
 
@@ -142,10 +148,16 @@ often known as `popcnt`, is also quite common.
 
 ### Needles in huge haystacks
 
-The **Hamming distance** between two integers, the number of positions
+
+The Hamming distance between two integers, the number of positions
 at which the corresponding bits are different, is an effective way
 to estimate similarity; it can be computed using just one `xor`
 and one `popcnt` instruction.
+
+![Hamming distance](res/hamming.png)
+
+**The Hamming distance** *between adjacent vertices
+in a cubical graph is one, image from [Wikipedia][wikihamming].*
 
 Rumor has it that organizations who are sifting through huge amounts of data
 prefer to buy CPUs that come with a bit count instruction.
@@ -215,9 +227,14 @@ of RAM to spare, you can story a set of integer elements in the range
 
 ### Sieve of Eratosthenes
 
-This piece of code uses a bit set to generate the set of all primes
-less than *n* in O(*n* log log *n*) time. Try it with *n* equal to
-a few hundred millions and be pleasantly surprised.
+![Eratosthenes](res/eratosthenes.png)
+
+**Eratosthenes of Cyrene**, *276-194 BC, image from [Wikipedia][eratosthenes].*
+
+This code snippet implements the sieve of Eratosthenes.
+It uses a bit set implementation from the [bit][bit] package
+to generate the set of all primes less than *n* in O(*n* log log *n*) time.
+Try it with *n* equal to a few hundred millions and be pleasantly surprised.
 
     sieve := bit.New().AddRange(2, n)
     sqrtN := int(math.Sqrt(n))
@@ -307,6 +324,7 @@ because it hashes to a bit position containing 0.
 [bloom]: https://github.com/yourbasic/bloom
 [bloomdoc]: https://godoc.org/github.com/yourbasic/bloom
 [CCBY3]: https://creativecommons.org/licenses/by/3.0/deed.en
+[eratosthenes]: https://en.wikipedia.org/wiki/File:Eratosthene.01.png
 [golang]: https://golang.org
 [graph]: https://github.com/yourbasic/graph
 [graphbfs]: https://github.com/yourbasic/graph/blob/master/bfs.go
@@ -316,5 +334,7 @@ because it hashes to a bit position containing 0.
 [sort]: https://www.nada.kth.se/~snilsson/fast-sorting/
 [urban]: http://www.urbandictionary.com/define.php?term=underrated
 [wikibloom]: https://en.wikipedia.org/wiki/File:Bloom_filter.svg
+[wikicube]: https://commons.wikimedia.org/wiki/File:Cube_diagram;_octal_numbers.svg
+[wikihamming]: https://en.wikipedia.org/wiki/File:Hamming_distance_3_bit_binary.svg
 [wikiint]: (https://commons.wikimedia.org/wiki/File:Integers-line.svg)
 
