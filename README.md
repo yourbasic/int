@@ -56,8 +56,7 @@ Still we frequently forget how powerful an integer can be.
   Not really, but we've used arithmetic since childhood so it feels that way.  
   Familiarity breeds both simplicity and contempt.
 
-The code examples are in [Go][golang] and the text comes with
-three example libraries:
+The text comes with three [Go][golang] example libraries:
 
 - [bit][bit] contains a set data structure and some bit-twiddling functions,
 - [bloom][bloom] is a Bloom filter, a probabilistic set data structure, and
