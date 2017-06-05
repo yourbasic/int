@@ -39,8 +39,8 @@ and every programmer is familiar with the [int data type][int].
 Still we frequently forget how powerful an integer can be.
 
 - **Generic**  
-  An `int` or `int[]` is a bit pattern that can represent anything.  
-  Furthermore, an `int` can point into an array containing any type of data.  
+  An `int` or `int[]` is a bit pattern that can represent any digital data.  
+  Furthermore, an `int` can point into ant type of array.  
   That's as generic as it gets.
 
 - **Effective**  
