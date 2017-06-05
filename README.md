@@ -148,7 +148,7 @@ to estimate similarity; it can be computed using just one `xor`
 and one `popcnt` instruction.
 
 Rumor has it that organizations who are sifting through huge amounts of data
-prefer to buy CPU:s that come with a bit count instruction.
+prefer to buy CPUs that come with a bit count instruction.
 As a case in point, the new Zen microarchitecture from AMD supports
 no less than four `popcnt` instructions per clock cycle.
 
@@ -232,14 +232,25 @@ a few hundred millions and be pleasantly surprised.
 
 # Efficient filtering
 
-A Bloom filter is a fast and space-efficient probabilistic data structure
-used to test set membership.
+Hash functions are yet another triumph for the integer data type.
+They are worth a tribute of their own, but in this section we will
+just take them for granted. If we combine a bit array with
+a set of hash functions we get a *Bloom filter*, a probabilistic
+data structure used to test set membership.
 
 A membership test returns either ”likely member” or ”definitely not a member”.
 Only false positives can occur: an element that has been added to the filter
 will always be identified as ”likely member”.
 
+Bloom filters are both fast and space-efficient.
+Akamai uses them to avoid caching one-hit wonders, files that are seen
+only once, in their content delivery networks.
+Google uses them in Chrome to check for potentially harmful URLs.
+
+
 ### A blacklist of shady websites
+
+Here is a code snippet showing a typical Bloom filter use case.
 
     // Create a Bloom filter with room for 10000 elements
     // at a false-positives rate less than 0.5 percent.
@@ -260,6 +271,8 @@ will always be identified as ”likely member”.
 
 
 ### Bloom filter
+
+The implemenation is quite straightforward... TODO
 
 This example from [Wikipedia][wikibloom] depicts a Bloom filter
 that consists of 18 bits and uses 3 hash functions.
