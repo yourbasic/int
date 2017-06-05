@@ -16,6 +16,12 @@
 
 [Effective bit manipulation](#effective-bit-manipulation)
 
+* [Needles in big haystacks](#needles-in-big-haystacks)
+
+* [Bit count](#bit-count)
+
+* [Fast integer sorting](#fast-integer-sorting)
+
 [Efficient filtering](#efficient-filtering)
 
 * [A blacklist of shady websites](#a-blacklist-of-shady-websites)
@@ -109,8 +115,33 @@ an array of booleans to keep track of which vertices have been visited.
 
 # Effective bit manipulation
 
-Bitwise operators...
+Bitwise operators operate on single bits, often in parallel, within an integer.
+They offer a set of fast, simple actions that can be surprisingly effective.
 
+The standard set of bitwise instructions found in pretty much every CPU includes
+`not`, `and`, `or`, `xor`, and a selection of `shift` and `rotate` instructions.
+A bit count instruction, often known as `popcnt`, is also quite common.
+
+
+### Needles in big haystacks
+
+The **hamming distance** between two integers, the number of positions
+at which the corresponding bits are different, is an effective way
+to estimate similarity. It can be computed using `xor` and a `popcnt`.
+
+    hamming := bit.Count(b1 ^ b2)
+
+Rumor has it that organizations who are sifting through huge amounts of data
+prefer to use CPU:s featuring a native bit count instruction.
+Ryzen, the new microarchitecture from AMD, is able to execute four `popcnt`
+instructions per clock cycle.
+
+
+### Bit count
+
+If your CPU doesn't offer a native bit count operation,
+it can still be implemented quite efficiently using only
+the more common bitwise operators.
 Here is a code sample from the [bit][bit] package:
 
     // Count returns the number of nonzero bits in w.
@@ -141,6 +172,15 @@ Here is a code sample from the [bit][bit] package:
     }
 
 *Source code from [funcs.go][bitfunc].*
+
+
+### Fast integer sorting
+
+The different flavors of radix sort use bit-twiddling to good effect.
+Bitwise operators are also crucial in the implementation of the fastest
+(in the standard unit-cost RAM model) known integer sorting algorithm,
+which sorts *n* integers in O(*n* log log *n*) time.
+[The fastest sorting algorithm?][sort] gives all the details.
 
 
 # Efficient filtering
@@ -227,6 +267,7 @@ Try it with *n* equal to a few hundred millions and be pleasantly surprised.
 [int]: https://en.wikipedia.org/wiki/Integer_(computer_science)
 [integer]: https://en.wikipedia.org/wiki/Integer
 [korthaj]: https://github.com/korthaj
+[sort]: https://www.nada.kth.se/~snilsson/fast-sorting/
 [wikibloom]: https://en.wikipedia.org/wiki/File:Bloom_filter.svg
 [wikiint]: (https://commons.wikimedia.org/wiki/File:Integers-line.svg)
 
