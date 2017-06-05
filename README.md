@@ -52,11 +52,11 @@ Still we frequently forget how powerful an integer can be.
 
 - **Generic**  
   An `int` or `int[]` is a bit pattern that can represent any digital data.  
-  Furthermore, an `int` can point into ant type of array.  
+  Furthermore, an `int` can point into any type of array.  
   That's as generic as it gets.
 
 - **Effective**  
-  With an `int` you have all of basic mathematics at your finger tips;  
+  With an `int` you have all of basic mathematics at your finger tips,  
   and boolean algebra, implemented with bit-level parallelism, to boot.
 
 - **Simple**  
@@ -73,7 +73,7 @@ Still we frequently forget how powerful an integer can be.
 The text comes with three [Go][golang] example libraries:
 
 - [github.com/yourbasic/bit][bit]
-  contains a set data structure and some bit-twiddling functions,
+  contains a bit array and some bit-twiddling functions,
 - [github.com/yourbasic/bloom][bloom]
   is a Bloom filter, a probabilistic set data structure, and
 - [github.com/yourbasic/graph][graph]
@@ -88,8 +88,8 @@ The text comes with three [Go][golang] example libraries:
 
 Since graphs are used to model countless types of relations and processes
 in varied kinds of systems and settings, there is no telling what kind of data
-a generic graph library will encounter. Both vertices and edges might need
-to be labeled. Should we use parametric polymorphism or perhaps a pointer
+a generic graph library will encounter; both vertices and edges can have
+labels attached to them. Should we use parametric polymorphism or perhaps a pointer
 to the top of a type hierarchy?
 
 It's easy to forget that an integer may be the preferred choice.
@@ -134,13 +134,13 @@ an array of booleans to keep track of which vertices have been visited.
 
 # Effective searching and sorting
 
-Some of the most effective search and sort strategies are implemented
+Some of the most effective search and sort algorithms are implemented
 by bit manipulation done with bitwise integer operators.
-These operators operate on single bits, often in parallel, within an integer.
+These operators operate, often in parallel, on the single bits of an integer.
 Even though they don't form a Turing-complete set of operations,
 they can still be surprisingly effective.
 
-The standard set of bitwise operators found in pretty much every CPU
+The standard set of bitwise operators, found in almost every CPU,
 includes the bitwise `not`, `and`, `or` and `xor` instructions; plus
 a collection of `shift` and `rotate` instructions. A bit count instruction,
 often known as `popcnt`, is also quite common.
@@ -167,7 +167,7 @@ no less than four `popcnt` instructions per clock cycle.
 
 ### Bit count
 
-If the CPU doesn't have a native bit count operation, it can still
+If the CPU doesn't have a native bit count operation, `popcnt` can still
 be implemented quite efficiently using the more common bitwise operators.
 Here is a fun code sample from the [bit][bit] package:
 
@@ -267,7 +267,7 @@ Google uses them in Chrome to check for potentially harmful URLs.
 
 ### A blacklist of shady websites
 
-Here is a code snippet showing a typical Bloom filter use case.
+This piece of code shows a typical Bloom filter use case.
 
     // Create a Bloom filter with room for 10000 elements
     // at a false-positives rate less than 0.5 percent.
