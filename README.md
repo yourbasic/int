@@ -1,10 +1,15 @@
 # Your basic int
 
-### A tribute to the ultimate underrated data type
+### A tribute to an underrated data type
 
-![DOUBLE-STRUCK CAPITAL Z](res/z.png)
+> you're the shit, you're down as hell,  
+> and everything about you is great  
+> BUT people don't think too much of you  
+> because they don't know you.
+> 
+> you're so under rated, it sucks.
 
-*The Zahlen symbol, used to denote the set of all integers.*
+**Underrated,** *[Urban Dictionary][urban].*
 
 # Table of contents
 
@@ -36,6 +41,10 @@
 
 
 # Introduction
+
+![DOUBLE-STRUCK CAPITAL Z](res/z.png)
+
+*The Zahlen symbol, used to denote the set of all integers.*
 
 Every kid knows what an [integer number][integer] is,
 and every programmer is familiar with the [int data type][int].  
@@ -279,6 +288,7 @@ because it hashes to a bit position containing 0.
 [integer]: https://en.wikipedia.org/wiki/Integer
 [korthaj]: https://github.com/korthaj
 [sort]: https://www.nada.kth.se/~snilsson/fast-sorting/
+[urban]: http://www.urbandictionary.com/define.php?term=underrated
 [wikibloom]: https://en.wikipedia.org/wiki/File:Bloom_filter.svg
 [wikiint]: (https://commons.wikimedia.org/wiki/File:Integers-line.svg)
 
