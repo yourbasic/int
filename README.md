@@ -14,7 +14,7 @@
 
 * [Breadth-first search](#breadth-first-search)
 
-[Effective bit manipulation](#effective-bit-manipulation)
+[Effective search and sort](#effective-search-and-sort)
 
 * [Needles in big haystacks](#needles-in-big-haystacks)
 
@@ -113,12 +113,15 @@ an array of booleans to keep track of which vertices have been visited.
 *Source code from [bfs.go][graphbfs].*
 
 
-# Effective bit manipulation
+# Effective search and sort
 
-Bitwise operators operate on single bits, often in parallel, within an integer.
-They provide a set of fast, simple actions that can be surprisingly effective.
+Some of the most effective search and sort strategies are implemented
+by bit manipulation done with bitwise integer operators.
+These operators operate on single bits, often in parallel, within an integer.
+Even though they don't form a Turing-complete set of operations,
+they can still be surprisingly effective.
 
-The standard set of bitwise instructions found in pretty much every CPU
+The standard set of bitwise operators found in pretty much every CPU
 includes bitwise `not`, `and`, `or` and `xor` instructions; plus a collection
 of `shift` and `rotate` instructions. A bit count instruction,
 often known as `popcnt`, is also quite common.
@@ -126,14 +129,15 @@ often known as `popcnt`, is also quite common.
 
 ### Needles in big haystacks
 
-The **hamming distance** between two integers, the number of positions
+The **Hamming distance** between two integers, the number of positions
 at which the corresponding bits are different, is an effective way
-to estimate similarity. It can be computed using just one `xor`
+to estimate similarity; it can be computed using just one `xor`
 and one `popcnt` instruction.
 
 Rumor has it that organizations who are sifting through huge amounts of data
 prefer to buy CPU:s that come with a bit count instruction. Zen, the new
-microarchitecture from AMD, supports four `popcnt` instructions per clock cycle.
+microarchitecture from AMD, supports no less than four `popcnt` instructions
+per clock cycle.
 
 
 ### Bit count
@@ -174,10 +178,10 @@ Here is a fun code sample from the [bit][bit] package:
 
 ### Fast integer sorting
 
-The different flavors of radix sort use bit manipulation to good effect.
-Bitwise operators are also crucial in the implementation of the fastest
-(in the standard unit-cost RAM model) known integer sorting algorithm,
-which sorts *n* integers in O(*n* log log *n*) time.
+Radix sort uses bit manipulation to good effect and bitwise operators are
+crucial in the implementation of the fastest known integer sorting algorithm.
+This algorithm sorts *n* integers in O(*n* log log *n*) time
+in the unit-cost RAM model, the standard model of theoretical computer science.
 [The fastest sorting algorithm?][sort] has all the details.
 
 
