@@ -48,12 +48,12 @@
 
 **The Zahlen symbol** *used to denote the set of all integers.*
 
-Every kid knows what an [integer number][integer] is,
-and every programmer is familiar with the [int data type][int].  
+Every kid knows what an **[integer number][integer]** is,
+and every programmer is familiar with the **[int data type][int]**.  
 Still we frequently forget how powerful an integer can be.
 
 - **Generic**  
-  An `int` or `int[]` is a bit pattern that can represent any digital data.  
+  An `int` or `[]int` is a bit pattern that can represent any digital data.  
   Furthermore, an `int` can point into any type of array.  
   That's as generic as it gets.
 
@@ -67,7 +67,7 @@ Still we frequently forget how powerful an integer can be.
 
 - **Efficient**  
   An `int` fits inside a register sitting on the main datapath of the CPU,  
-  and an `int[]` is the main focus of hardware memory optimization.  
+  and an `[]int` is the main focus of hardware memory optimization.  
   It doesn't get much faster or more efficient than that.
 
 ### Resources
@@ -137,7 +137,7 @@ an array of booleans to keep track of which vertices have been visited.
 # Effective searching and sorting
 
 Some of the most effective search and sort algorithms are implemented
-by bit manipulation done with bitwise integer operators.
+by bit manipulation done with **bitwise integer operators**.
 These operators operate, often in parallel, on the single bits of an integer.
 Even though they don't form a Turing-complete set of operations,
 they can still be surprisingly effective.
@@ -151,7 +151,7 @@ often known as `popcnt`, is also quite common.
 ### Needles in huge haystacks
 
 
-The Hamming distance between two integers, the number of positions
+The **Hamming distance** between two integers, the number of positions
 at which the corresponding bits are different, is an effective way
 to estimate similarity; it can be computed using just one `xor`
 and one `popcnt` instruction.
@@ -205,7 +205,7 @@ Here is a fun code sample from the [bit][bit] package:
 
 ### Fast integer sorting
 
-Radix sort uses bit manipulation to good effect and bitwise operators are
+**Radix sort** uses bit manipulation to good effect and bitwise operators are
 crucial in the implementation of the fastest known integer sorting algorithm.
 This algorithm sorts *n* integers in O(*n* log log *n*) worst-case time
 on a unit-cost RAM machine, the standard computational model in theoretical
@@ -261,10 +261,10 @@ the index variable *k* will eventually wrap around and become negative.
 
 # Efficient filtering
 
-Hash functions are yet another triumph for the integer data type.
+**Hash functions** are yet another triumph for the integer data type.
 They are worth a tribute of their own, but in this section we will
 just take them for granted. If we combine a bit array with
-a set of hash functions we get a *Bloom filter*, a probabilistic
+a set of hash functions we get a **Bloom filter**, a probabilistic
 data structure used to test set membership.
 
 A membership test returns either ”likely member” or ”definitely not a member”.
