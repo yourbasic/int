@@ -236,10 +236,14 @@ It uses a bit set implementation from the [bit][bit] package
 to generate the set of all primes less than *n* in O(*n* log log *n*) time.
 Try it with *n* equal to a few hundred millions and be pleasantly surprised.
 
+    // Sieve of Eratosthenes (with optimization suggested by tege)
     sieve := bit.New().AddRange(2, n)
+    for k := 4; k < n; k += 2 {
+        sieve.Delete(k)
+    }
     sqrtN := int(math.Sqrt(n))
-    for p := 2; p <= sqrtN; p = sieve.Next(p) {
-        for k := p * p; k < n; k += p {
+    for p := 3; p <= sqrtN; p = sieve.Next(p) {
+        for k := p * p; k < n; k += 2 * p {
             sieve.Delete(k)
         }
     }
