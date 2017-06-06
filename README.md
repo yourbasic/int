@@ -48,7 +48,7 @@
 
 **The Zahlen symbol** *used to denote the set of all integers.*
 
-Every kid knows what an **[integer number][integer]** is,
+Every kid can spot an **[integer number][integer]**,
 and every programmer is familiar with the **[int data type][int]**.  
 Still we frequently forget how powerful an integer can be.
 
