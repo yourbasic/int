@@ -336,7 +336,7 @@ because it hashes to a bit position containing 0.
 [bloom]: https://github.com/yourbasic/bloom
 [bloomdoc]: https://godoc.org/github.com/yourbasic/bloom
 [CCBY3]: https://creativecommons.org/licenses/by/3.0/deed.en
-[eratosthenes]: https://en.wikipedia.org/wiki/File:Eratosthene.01.png
+[eratosthenes]: https://commons.wikimedia.org/wiki/File:Portrait_of_Eratosthenes.png
 [golang]: https://golang.org
 [graph]: https://github.com/yourbasic/graph
 [graphbfs]: https://github.com/yourbasic/graph/blob/master/bfs.go
