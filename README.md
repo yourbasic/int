@@ -33,6 +33,8 @@
 
 * [Sieve of Eratosthenes](#sieve-of-eratosthenes)
 
+* [A fly in the ointment](#a-fly-in-the-ointment)
+
 [Efficient filtering](#efficient-filtering)
 
 * [A blacklist of shady websites](#a-blacklist-of-shady-websites)
@@ -231,12 +233,12 @@ of RAM to spare, you can story a set of integer elements in the range
 
 **Eratosthenes of Cyrene**, *276-194 BC, image from [Wikipedia][eratosthenes].*
 
-This code snippet implements the sieve of Eratosthenes.
+This code snippet implements the sieve of Eratosthenes
+(with an optimization suggested by [tege][tege]).
 It uses a bit set implementation from the [bit][bit] package
 to generate the set of all primes less than *n* in O(*n* log log *n*) time.
 Try it with *n* equal to a few hundred millions and be pleasantly surprised.
 
-    // Sieve of Eratosthenes (with optimization suggested by tege)
     sieve := bit.New().AddRange(2, n)
     for k := 4; k < n; k += 2 {
         sieve.Delete(k)
@@ -249,6 +251,12 @@ Try it with *n* equal to a few hundred millions and be pleasantly surprised.
     }
 
 *Example from [godoc.org/github.com/yourbasic/bit][bitdoc].*
+
+### A fly in the ointment
+
+The code above doesn't guard against **integer overflow**.
+If *n* is too close to the maximum representable value of an `int`,
+the index variable *k* will eventually wrap around and become negative.
 
 
 # Efficient filtering
@@ -335,6 +343,7 @@ because it hashes to a bit position containing 0.
 [integer]: https://en.wikipedia.org/wiki/Integer
 [korthaj]: https://github.com/korthaj
 [sort]: https://www.nada.kth.se/~snilsson/fast-sorting/
+[tege]: https://gmplib.org/~tege/
 [urban]: http://www.urbandictionary.com/define.php?term=underrated
 [wikibloom]: https://en.wikipedia.org/wiki/File:Bloom_filter.svg
 [wikicube]: https://commons.wikimedia.org/wiki/File:Cube_diagram;_octal_numbers.svg
