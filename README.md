@@ -151,10 +151,10 @@ often known as `popcnt`, is also quite common.
 ### Needles in huge haystacks
 
 
-The **[Hamming distance][wikihamming]** between two integers, the number of positions
-at which the corresponding bits are different, is an effective way
-to estimate similarity; it can be computed using just one `xor`
-and one `popcnt` instruction.
+The **[Hamming distance][wikihamming]** between two integers,
+the number of positions at which the corresponding bits are different,
+is an effective way to estimate similarity. It can be computed
+using just one `xor` and one `popcnt` instruction.
 
 ![Hamming distance](res/hamming.png)
 
@@ -205,18 +205,19 @@ Here is a fun code sample from the [bit][bit] package:
 
 ### Fast integer sorting
 
-**[Radix sort][wikiradix]** uses bit manipulation to good effect and bitwise operators are
-crucial in the implementation of the fastest known integer sorting algorithm.
-This algorithm sorts *n* integers in O(*n* log log *n*) worst-case time
-on a unit-cost RAM machine, the standard computational model in theoretical
-computer science. [The fastest sorting algorithm?][sort] has all the details.
+**[Radix sort][wikiradix]** uses bit manipulation to good effect,
+and bitwise operators are crucial in the implementation of the fastest
+known integer sorting algorithm. It sorts *n* integers
+in O(*n* log log *n*) worst-case time on a unit-cost RAM machine,
+the standard computational model in theoretical computer science.
+[The fastest sorting algorithm?][sort] has all the details.
 
 
 # Simple sets
 
-A **[bit set][wikibitarray]**, or bit array, must be the simplest data structure in town.
-It consists of an array of integers, where the bit at position *k*
-is one whenever *k* belongs to the set.
+A **[bit set][wikibitarray]**, or bit array, must be the simplest
+data structure in town. It's just an array of integers, where the bit
+at position *k* is one whenever *k* belongs to the set.
 
 Even though it's simple, a bit set can be quite powerful. Because it uses
 bit-level parallelism, limits memory access, and plays nicely with
