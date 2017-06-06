@@ -315,10 +315,11 @@ a set element to one of the *m* bit positions.
   If all are 1, then the element
   is probably in the set.
 
-This example from [Wikipedia][wikibloompic] depicts a Bloom filter
-that consists of 18 bits and uses 3 hash functions.
+Here is a Bloom filter that consists of 18 bits and uses 3 hash functions.
 
 ![Bloom filter](res/bloom.png)
+
+*Example from [Wikipedia][wikibloompic].*
 
 The colored arrows point to the bits that the elements
 of the set {*x*, *y*, *z*} are mapped to. The element *w* is not in the set,
