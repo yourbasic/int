@@ -137,7 +137,7 @@ an array of booleans to keep track of which vertices have been visited.
 # Effective searching and sorting
 
 Some of the most effective search and sort algorithms are implemented
-by bit manipulation done with **bitwise integer operators**.
+by bit manipulation done with **[bitwise integer operators][wikibit]**.
 These operators operate, often in parallel, on the single bits of an integer.
 Even though they don't form a Turing-complete set of operations,
 they can still be surprisingly effective.
@@ -151,7 +151,7 @@ often known as `popcnt`, is also quite common.
 ### Needles in huge haystacks
 
 
-The **Hamming distance** between two integers, the number of positions
+The **[Hamming distance][wikihamming]** between two integers, the number of positions
 at which the corresponding bits are different, is an effective way
 to estimate similarity; it can be computed using just one `xor`
 and one `popcnt` instruction.
@@ -159,7 +159,7 @@ and one `popcnt` instruction.
 ![Hamming distance](res/hamming.png)
 
 **The Hamming distance** *between adjacent vertices
-in a cubical graph is one, image from [Wikipedia][wikihamming].*
+in a cubical graph is one, image from [Wikipedia][wikihammingpic].*
 
 Rumor has it that organizations who are sifting through huge amounts of data
 prefer to buy CPUs that come with a bit count instruction.
@@ -205,7 +205,7 @@ Here is a fun code sample from the [bit][bit] package:
 
 ### Fast integer sorting
 
-**Radix sort** uses bit manipulation to good effect and bitwise operators are
+**[Radix sort][wikiradix]** uses bit manipulation to good effect and bitwise operators are
 crucial in the implementation of the fastest known integer sorting algorithm.
 This algorithm sorts *n* integers in O(*n* log log *n*) worst-case time
 on a unit-cost RAM machine, the standard computational model in theoretical
@@ -214,7 +214,7 @@ computer science. [The fastest sorting algorithm?][sort] has all the details.
 
 # Simple sets
 
-A **bit set**, or bit array, must be the simplest data structure in town.
+A **[bit set][wikibitarray]**, or bit array, must be the simplest data structure in town.
 It consists of an array of integers, where the bit at position *k*
 is one whenever *k* belongs to the set.
 
@@ -254,17 +254,17 @@ Try it with *n* equal to a few hundred millions and be pleasantly surprised.
 
 ### A fly in the ointment
 
-The code above doesn't guard against **integer overflow**.
+The code above doesn't guard against **[integer overflow][wikioverflow]**.
 If *n* is too close to the maximum representable value of an `int`,
 the index variable *k* will eventually wrap around and become negative.
 
 
 # Efficient filtering
 
-**Hash functions** are yet another triumph for the integer data type.
+**[Hash functions][wikihash]** are yet another triumph for the integer data type.
 They are worth a tribute of their own, but in this section we will
 just take them for granted. If we combine a bit array with
-a set of hash functions we get a **Bloom filter**, a probabilistic
+a set of hash functions we get a **[Bloom filter][wikibloom]**, a probabilistic
 data structure used to test set membership.
 
 A membership test returns either ”likely member” or ”definitely not a member”.
@@ -315,7 +315,7 @@ a set element to one of the *m* bit positions.
   If all are 1, then the element
   is probably in the set.
 
-This example from [Wikipedia][wikibloom] depicts a Bloom filter
+This example from [Wikipedia][wikibloompic] depicts a Bloom filter
 that consists of 18 bits and uses 3 hash functions.
 
 ![Bloom filter](res/bloom.png)
@@ -345,8 +345,15 @@ because it hashes to a bit position containing 0.
 [sort]: https://www.nada.kth.se/~snilsson/fast-sorting/
 [tege]: https://gmplib.org/~tege/
 [urban]: http://www.urbandictionary.com/define.php?term=underrated
-[wikibloom]: https://en.wikipedia.org/wiki/File:Bloom_filter.svg
+[wikibit]: https://en.wikipedia.org/wiki/Bitwise_operation
+[wikibitarray]: https://en.wikipedia.org/wiki/Bit_array
+[wikibloom]: https://en.wikipedia.org/wiki/Bloom_filter
+[wikibloompic]: https://en.wikipedia.org/wiki/File:Bloom_filter.svg
 [wikicube]: https://commons.wikimedia.org/wiki/File:Cube_diagram;_octal_numbers.svg
-[wikihamming]: https://en.wikipedia.org/wiki/File:Hamming_distance_3_bit_binary.svg
+[wikihamming]: https://en.wikipedia.org/wiki/Hamming_distance
+[wikihammingpic]: https://en.wikipedia.org/wiki/File:Hamming_distance_3_bit_binary.svg
+[wikihash]: https://en.wikipedia.org/wiki/Hash_function
 [wikiint]: (https://commons.wikimedia.org/wiki/File:Integers-line.svg)
+[wikioverflow]: https://en.wikipedia.org/wiki/Integer_overflow
+[wikiradix]: https://en.wikipedia.org/wiki/Radix_sort
 
