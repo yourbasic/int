@@ -4,7 +4,7 @@
 
 ![Calculator](res/calculator.jpg)
 
-**Calculator** *picture from [Pixabay][pixabay], [CC0][CC0].*
+**Calculator** *picture from [Pixabay][pixabay].*
 
 > you're the shit, you're down as hell,  
 > and everything about you is great  
@@ -340,7 +340,6 @@ because it hashes to a bit position containing 0.
 [bitfunc]: https://github.com/yourbasic/bit/blob/master/funcs.go
 [bloom]: https://github.com/yourbasic/bloom
 [bloomdoc]: https://godoc.org/github.com/yourbasic/bloom
-[CC0]: https://creativecommons.org/publicdomain/zero/1.0/deed.en
 [CCBY3]: https://creativecommons.org/licenses/by/3.0/deed.en
 [eratosthenes]: https://commons.wikimedia.org/wiki/File:Portrait_of_Eratosthenes.png
 [golang]: https://golang.org
