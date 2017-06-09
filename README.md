@@ -2,6 +2,10 @@
 
 ### A tribute to an underrated data type
 
+![Calculator](res/calculator.jpg)
+
+**Calculator** *picture from [Pixabay][pixabay], [CC0 1.0][CC0].*
+
 > you're the shit, you're down as hell,  
 > and everything about you is great  
 > BUT people don't think too much of you  
@@ -336,6 +340,7 @@ because it hashes to a bit position containing 0.
 [bitfunc]: https://github.com/yourbasic/bit/blob/master/funcs.go
 [bloom]: https://github.com/yourbasic/bloom
 [bloomdoc]: https://godoc.org/github.com/yourbasic/bloom
+[CC0]: https://creativecommons.org/publicdomain/zero/1.0/deed.en
 [CCBY3]: https://creativecommons.org/licenses/by/3.0/deed.en
 [eratosthenes]: https://commons.wikimedia.org/wiki/File:Portrait_of_Eratosthenes.png
 [golang]: https://golang.org
@@ -344,6 +349,7 @@ because it hashes to a bit position containing 0.
 [int]: https://en.wikipedia.org/wiki/Integer_(computer_science)
 [integer]: https://en.wikipedia.org/wiki/Integer
 [korthaj]: https://github.com/korthaj
+[pixabay]: https://pixabay.com/en/vintage-calculator-pi-calculation-648120/
 [sort]: https://www.nada.kth.se/~snilsson/fast-sorting/
 [tege]: https://gmplib.org/~tege/
 [urban]: http://www.urbandictionary.com/define.php?term=underrated
