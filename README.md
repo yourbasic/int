@@ -4,7 +4,7 @@
 
 ![Calculator](res/calculator.jpg)
 
-**Calculator** *picture from [Pixabay][pixabay], [CC0 1.0][CC0].*
+**Calculator** *picture from [Pixabay][pixabay], [CC0][CC0].*
 
 > you're the shit, you're down as hell,  
 > and everything about you is great  
