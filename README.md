@@ -31,7 +31,7 @@
 
 * [Bit count](#bit-count)
 
-* [Fast integer sorting](#fast-integer-sorting)
+* [Fast sorting](#fast-sorting)
 
 [Simple sets](#simple-sets)
 
@@ -76,15 +76,16 @@ Still we frequently forget how powerful an integer can be.
 
 ### Resources
 
-The text comes with three [Go][golang] example libraries:
+The text comes with four [Go][golang] example libraries:
 
 - [github.com/yourbasic/bit][bit]
   contains a bit array and some bit-twiddling functions,
 - [github.com/yourbasic/bloom][bloom]
-  is a Bloom filter, a probabilistic set data structure, and
+  is a Bloom filter, a probabilistic set data structure,
 - [github.com/yourbasic/graph][graph]
-  is a library of basic graph algorithms.
-
+  is a library of basic graph algorithms, and
+- [github.com/yourbasic/radix][radix]
+  is a string sorting algorithm implemented with MSD radix sort.
 
 # Generic graph data
 
@@ -207,10 +208,16 @@ Here is a fun code sample from the [bit][bit] package:
 *Source code from [funcs.go][bitfunc].*
 
 
-### Fast integer sorting
+### Fast sorting
 
-**[Radix sort][wikiradix]** uses bit manipulation to good effect,
-and bitwise operators are crucial in the implementation of the fastest
+**[Radix sort][radix]** also uses bit manipulation to good effect.
+For string sorting, a carefully implemented radix sort can be
+considerably faster than Quicksort, sometimes more than twice as fast.
+A discussion of **MSD radix sort**, its implementation and a comparison
+with other well-known sorting algorithms can be found in
+[Implementing radixsort][implradix].
+
+Bitwise operators are also crucial in the implementation of the fastest
 known integer sorting algorithm. It sorts *n* integers
 in O(*n* log log *n*) worst-case time on a unit-cost RAM machine,
 the standard computational model in theoretical computer science.
@@ -345,10 +352,12 @@ because it hashes to a bit position containing 0.
 [golang]: https://golang.org
 [graph]: https://github.com/yourbasic/graph
 [graphbfs]: https://github.com/yourbasic/graph/blob/master/bfs.go
+[implradix]: https://www.nada.kth.se/~snilsson/publications/Radixsort-implementation/
 [int]: https://en.wikipedia.org/wiki/Integer_(computer_science)
 [integer]: https://en.wikipedia.org/wiki/Integer
 [korthaj]: https://github.com/korthaj
 [pixabay]: https://pixabay.com/en/vintage-calculator-pi-calculation-648120/
+[radix]: https://github.com/yourbasic/radix
 [sort]: https://www.nada.kth.se/~snilsson/fast-sorting/
 [tege]: https://gmplib.org/~tege/
 [urban]: http://www.urbandictionary.com/define.php?term=underrated
@@ -362,5 +371,4 @@ because it hashes to a bit position containing 0.
 [wikihash]: https://en.wikipedia.org/wiki/Hash_function
 [wikiint]: (https://commons.wikimedia.org/wiki/File:Integers-line.svg)
 [wikioverflow]: https://en.wikipedia.org/wiki/Integer_overflow
-[wikiradix]: https://en.wikipedia.org/wiki/Radix_sort
 
