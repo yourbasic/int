@@ -114,27 +114,29 @@ vertex data on the side.
 For example, this generic implementation of breadth-first search uses
 an array of booleans to keep track of which vertices have been visited.
 
-    // BFS traverses g in breadth-first order starting at v.
-    // When the algorithm follows an edge (v, w) and finds a previously
-    // unvisited vertex w, it calls do(v, w, c) with c equal to
-    // the cost of the edge (v, w).
-    func BFS(g Iterator, v int, do func(v, w int, c int64)) {
-        visited := make([]bool, g.Order())
-        visited[v] = true
-        for queue := []int{v}; len(queue) > 0; {
-            v := queue[0]
-            queue = queue[1:]
-            g.Visit(v, func(w int, c int64) (skip bool) {
-                if visited[w] {
-                    return
-                }
-                do(v, w, c)
-                visited[w] = true
-                queue = append(queue, w)
-                return
-            })
-        }
-    }
+```go
+// BFS traverses g in breadth-first order starting at v.
+// When the algorithm follows an edge (v, w) and finds a previously
+// unvisited vertex w, it calls do(v, w, c) with c equal to
+// the cost of the edge (v, w).
+func BFS(g Iterator, v int, do func(v, w int, c int64)) {
+	visited := make([]bool, g.Order())
+	visited[v] = true
+	for queue := []int{v}; len(queue) > 0; {
+		v := queue[0]
+		queue = queue[1:]
+		g.Visit(v, func(w int, c int64) (skip bool) {
+			if visited[w] {
+				return
+			}
+			do(v, w, c)
+			visited[w] = true
+			queue = append(queue, w)
+			return
+		})
+	}
+}
+```
 
 *Source code from [bfs.go][graphbfs].*
 
@@ -178,32 +180,34 @@ If the CPU doesn't have a native bit count operation, `popcnt` can still
 be implemented quite efficiently using the more common bitwise operators.
 Here is a fun code sample from the [bit][bit] package:
 
-    // Count returns the number of nonzero bits in w.
-    func Count(w uint64) int {
-        // “Software Optimization Guide for AMD64 Processors”, Section 8.6.
-        const maxw = 1<<64 - 1
-        const bpw = 64
-    
-        // Compute the count for each 2-bit group.
-        // Example using 16-bit word w = 00,01,10,11,00,01,10,11
-        // w - (w>>1) & 01,01,01,01,01,01,01,01 = 00,01,01,10,00,01,01,10
-        w -= (w >> 1) & (maxw / 3)
+```go
+// Count returns the number of nonzero bits in w.
+func Count(w uint64) int {
+	// “Software Optimization Guide for AMD64 Processors”, Section 8.6.
+	const maxw = 1<<64 - 1
+	const bpw = 64
 
-        // Add the count of adjacent 2-bit groups and store in 4-bit groups:
-        // w & 0011,0011,0011,0011 + w>>2 & 0011,0011,0011,0011 = 0001,0011,0001,0011
-        w = w&(maxw/15*3) + (w>>2)&(maxw/15*3)
-    
-        // Add the count of adjacent 4-bit groups and store in 8-bit groups:
-        // (w + w>>4) & 00001111,00001111 = 00000100,00000100
-        w += w >> 4
-        w &= maxw / 255 * 15
-    
-        // Add all 8-bit counts with a multiplication and a shift:
-        // (w * 00000001,00000001) >> 8 = 00001000
-        w *= maxw / 255
-        w >>= (bpw/8 - 1) * 8
-        return int(w)
-    }
+	// Compute the count for each 2-bit group.
+	// Example using 16-bit word w = 00,01,10,11,00,01,10,11
+	// w - (w>>1) & 01,01,01,01,01,01,01,01 = 00,01,01,10,00,01,01,10
+	w -= (w >> 1) & (maxw / 3)
+
+	// Add the count of adjacent 2-bit groups and store in 4-bit groups:
+	// w & 0011,0011,0011,0011 + w>>2 & 0011,0011,0011,0011 = 0001,0011,0001,0011
+	w = w&(maxw/15*3) + (w>>2)&(maxw/15*3)
+
+	// Add the count of adjacent 4-bit groups and store in 8-bit groups:
+	// (w + w>>4) & 00001111,00001111 = 00000100,00000100
+	w += w >> 4
+	w &= maxw / 255 * 15
+
+	// Add all 8-bit counts with a multiplication and a shift:
+	// (w * 00000001,00000001) >> 8 = 00001000
+	w *= maxw / 255
+	w >>= (bpw/8 - 1) * 8
+	return int(w)
+}
+```
 
 *Source code from [funcs.go][bitfunc].*
 
@@ -251,16 +255,18 @@ It uses a bit set implementation from the [bit][bit] package
 to generate the set of all primes less than *n* in O(*n* log log *n*) time.
 Try it with *n* equal to a few hundred millions and be pleasantly surprised.
 
-    sieve := bit.New().AddRange(2, n)
-    for k := 4; k < n; k += 2 {
-        sieve.Delete(k)
-    }
-    sqrtN := int(math.Sqrt(n))
-    for p := 3; p <= sqrtN; p = sieve.Next(p) {
-        for k := p * p; k < n; k += 2 * p {
-            sieve.Delete(k)
-        }
-    }
+```go
+sieve := bit.New().AddRange(2, n)
+for k := 4; k < n; k += 2 {
+    sieve.Delete(k)
+}
+sqrtN := int(math.Sqrt(n))
+for p := 3; p <= sqrtN; p = sieve.Next(p) {
+	for k := p * p; k < n; k += 2 * p {
+		sieve.Delete(k)
+	}
+}
+```
 
 *Example from [godoc.org/github.com/yourbasic/bit][bitdoc].*
 
@@ -292,20 +298,22 @@ Google uses them in Chrome to check for potentially harmful URLs.
 
 This piece of code shows a typical Bloom filter use case.
 
-    // Create a Bloom filter with room for 10000 elements
-    // at a false-positives rate less than 0.5 percent.
-    blacklist := bloom.New(10000, 200)
-    
-    // Add an element to the filter.
-    url := "https://rascal.com"
-    blacklist.Add(url)
-    
-    // Test for membership.
-    if blacklist.Test(url) {
-        fmt.Println(url, "seems to be shady.")
-    } else {
-        fmt.Println(url, "has not yet been added to our blacklist.")
-    }
+```go
+// Create a Bloom filter with room for 10000 elements
+// at a false-positives rate less than 0.5 percent.
+blacklist := bloom.New(10000, 200)
+
+// Add an element to the filter.
+url := "https://rascal.com"
+blacklist.Add(url)
+
+// Test for membership.
+if blacklist.Test(url) {
+	fmt.Println(url, "seems to be shady.")
+} else {
+	fmt.Println(url, "has not yet been added to our blacklist.")
+}
+```
 
 *Example from [godoc.org/github.com/yourbasic/bit][bloomdoc].*
 
