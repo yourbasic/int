@@ -211,6 +211,10 @@ func Count(w uint64) int {
 
 *Source code from [funcs.go][bitfunc].*
 
+As of Go 1.9 a bit count function is available in the new package `math/bits`.
+On most architectures functions in this package are recognized
+by the compiler and treated as intrinsics for additional performance.
+
 
 ### Fast sorting
 
