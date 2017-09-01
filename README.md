@@ -319,7 +319,7 @@ if blacklist.Test(url) {
 }
 ```
 
-*Example from [godoc.org/github.com/yourbasic/bit][bloomdoc].*
+*Example from [godoc.org/github.com/yourbasic/bloom][bloomdoc].*
 
 
 ### Bloom filter implementation
